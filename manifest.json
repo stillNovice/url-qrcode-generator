@@ -6,11 +6,25 @@
   "incognito": "split",
   "browser_action": {
     "default_icon": "icons/icon256.png",
-    "default_popup": "index.html"
+    "default_popup": "index.html",
+    "default_title": "Generate QR Code"
   },
   "permissions": [
+    "<all_urls>",
+    "storage",
+    "tabs",
+    "contextMenus",
     "activeTab"
   ],
+  "content_scripts": [{
+    "matches": [
+      "<all_urls>"
+    ],
+    "js": ["qrcode.min.js", "content.js"]
+  }],
+  "background": {
+    "scripts": ["contextMenu.js"]
+  },
   "icons": {
     "16": "icons/icon16.png",
     "24": "icons/icon24.png",
